@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">PB.Lesson2</string>
+    <string name="write_your_text_here">Write your text Here</string>
+    <string name="button">BUTTON</string>
+    <string name="result_here">Result Here</string>
+</resources>
