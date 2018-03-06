@@ -6,6 +6,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.jakewharton.rxbinding2.widget.RxTextView;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.reactivex.disposables.Disposable;
@@ -25,17 +26,17 @@ public class MainActivity extends AppCompatActivity {
         onEditTextChange();
     }
 
-    private void onEditTextChange() {
-        Disposable editTextSubscr = RxTextView.textChanges(editText)
-                .subscribe(charSequence -> textView.setText(charSequence));
-
-    }
-
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if (!editTextSubscr.isDisposed()){
+        if(!editTextSubscr.isDisposed()){
             editTextSubscr.dispose();
         }
     }
+
+    private void onEditTextChange() {
+        editTextSubscr = RxTextView.textChanges(editText)
+                .subscribe(charSequence -> textView.setText(charSequence));
+    }
+
 }
